@@ -8,6 +8,9 @@ import react from '@astrojs/react';
 export default defineConfig({
   base: '/',
   trailingSlash: 'never',
+  server: {
+    port: 3001,
+  },
   markdown: {
     syntaxHighlight: 'prism',
   },
