@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+
+import MainLayout from '@/layouts/main.astro';
+
+const allErrors = await getCollection('errors');
+---
+
+<MainLayout>
+	<h1>React errors</h1>
+	<ul>
+		{
+			allErrors.map((error) => (
+				<li>
+					<a href={`/errors/${error.slug}`}>{error.data.title}</a>
+				</li>
+			))
+		}
+	</ul>
+</MainLayout>
