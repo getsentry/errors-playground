@@ -1,6 +1,6 @@
 ---
-title: 'Missing key prop'
-description: 'The Missing Key Prop error: why it happens and how to fix it'
+title: "Missing key prop"
+description: "The Missing Key Prop error: why it happens and how to fix it"
 ---
 
 # Missing Key Prop error

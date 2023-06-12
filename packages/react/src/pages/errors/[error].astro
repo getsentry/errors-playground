@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-import MainLayout from '@/layouts/main.astro';
+import MainLayout from "@/layouts/main.astro";
 
 export async function getStaticPaths() {
-  const allErrors = await getCollection('errors');
+  const allErrors = await getCollection("errors");
 
   return allErrors.map((error) => ({
     params: { error: error.slug },
