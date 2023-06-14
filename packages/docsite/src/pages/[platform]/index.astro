@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+
+import { getPlatforms } from "@/content/utils";
+import MainLayout from "@/layouts/main.astro";
+
+export async function getStaticPaths() {
+  const platforms = await getPlatforms();
+  const allErrors = await getCollection("errors");
+
+  return platforms.map((platform) => {
+    const platformErrors = allErrors.filter(
+      (error) => error.data.platform === platform
+    );
+    return {
+      params: { platform },
+      props: { platform, errors: platformErrors },
+    };
+  });
+}
+
+const { platform, errors } = Astro.props;
+---
+
+<MainLayout>
+  <h1>List the {platform} errors here!</h1>
+  <ul>
+    {errors.map((error) => <li><a href={`/${platform}/${error.slug}`}>{error.data.title}</a></li>)}
+  </ul>
+</MainLayout>

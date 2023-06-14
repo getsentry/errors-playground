@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+
+import Prose from "@/components/prose.astro";
+import MainLayout from "@/layouts/main.astro";
+
+export async function getStaticPaths() {
+  const allErrors = await getCollection("errors");
+
+  return allErrors.map((error) => ({
+    params: { platform: error.data.platform, error: error.slug },
+    props: { error },
+  }));
+}
+
+const { error } = Astro.props;
+const { Content } = await error.render();
+---
+
+<MainLayout title={error.data.title} desc={error.data.description}>
+  <Prose>
+    <Content />
+  </Prose>
+</MainLayout>

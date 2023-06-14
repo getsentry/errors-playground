@@ -1,0 +1,19 @@
+@layer globals {
+  @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Rubik:wght@400;600&display=swap");
+
+  body {
+    background-color: var(--colors-background);
+  }
+
+  /* Improve Page speed */
+  /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+  img {
+    content-visibility: auto;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid var(--colors-foreground);
+    height: 1px;
+  }
+}

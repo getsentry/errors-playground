@@ -1,0 +1,28 @@
+---
+import { getPlatforms } from '@/content/utils'
+import PlatformCard from "@/components/platform-card.astro";
+import MainLayout from "@/layouts/main.astro";
+
+const platforms = await getPlatforms(); 
+---
+
+<MainLayout>
+  <h1>Errors Playground</h1>
+  <ul class="platforms-grid">
+    {
+      platforms.map((platform) => (
+        <li class="platform">
+          <PlatformCard platform={platform} />
+        </li>
+      ))
+    }
+  </ul>
+</MainLayout>
+
+<style>
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    list-style: none;
+  }
+</style>

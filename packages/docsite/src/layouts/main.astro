@@ -1,0 +1,83 @@
+---
+import { SEO } from "astro-seo";
+import Nav from "@/components/nav.astro";
+
+import "@/styles/index.css";
+import "@/styles/reset.css";
+import "@/styles/tokens.css";
+import "@/styles/globals.css";
+import "@/styles/utilities.css";
+
+export interface Props {
+  title?: string;
+  desc?: string;
+  ogimage?: string;
+}
+
+const { title, desc } = Astro.props;
+
+const baseTitle = "Errors Playground";
+const makeTitle = title ? `${title} | ${baseTitle}` : baseTitle;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="me" href="https://fosstodon.org/@getsentry" />
+    <link rel="me" href="https://twitter.com/getsentry" />
+    <link rel="me" href="https://github.com/getsentry" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <SEO
+      title={makeTitle}
+      description={desc ||
+        "Errors Playground is a collection of common errors in multiple frameworks that's also accompanied by explanation why the errors happen and how to fix them. It's a great learning resource for developers."}
+      twitter={{
+        creator: "@getsentry",
+        site: "@getsentry",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          // url: canonicalURL,
+          type: "website",
+          title: makeTitle,
+          image: "", //resolvedImage,
+        },
+        image: {
+          alt: "Errors Playground",
+        },
+      }}
+    />
+  </head>
+  <body>
+    <div class="container">
+      <Nav />
+      <main>
+        <slot />
+      </main>
+    </div>
+
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1280px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding: 0px 18px;
+        }
+      }
+    </style>
+  </body>
+</html>
