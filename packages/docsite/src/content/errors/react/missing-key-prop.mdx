@@ -21,3 +21,27 @@ const Posts = () => {
   );
 };
 ```
+
+In order to fix it, we need to provide the `key` prop that would be unique for every repeating child:
+
+```javascript
+const Posts = () => {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+        //     ^ the key prop is unique for all posts in this list
+      ))}
+    </ul>
+  );
+};
+```
+
+import {MissingKeyProp} from "@errors-playground/react"
+
+## Reproduction
+
+The example above will reproduce this error. Open your console to see the output.
+
+<MissingKeyProp client:load />
+
