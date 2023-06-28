@@ -38,10 +38,12 @@ const Posts = () => {
 ```
 
 import {MissingKeyProp} from "@errors-playground/react"
+import Panel from "@/components/panel.astro"
 
 ## Reproduction
 
 The example above will reproduce this error. Open your console to see the output.
 
-<MissingKeyProp client:load />
-
+<Panel>
+  <MissingKeyProp client:load />
+</Panel>

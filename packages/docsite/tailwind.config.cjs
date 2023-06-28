@@ -12,6 +12,7 @@ module.exports = {
         },
         "rich-black": "#181225",
         violet: "#584774",
+        border: "#edeaf0",
         "violet-light": "#79628C",
       },
     },
