@@ -1,12 +1,10 @@
 ---
 import { SEO } from "astro-seo";
-import Nav from "@/components/nav.astro";
+import '@fontsource-variable/rubik';
 
-import "@/styles/index.css";
-import "@/styles/reset.css";
-import "@/styles/tokens.css";
-import "@/styles/globals.css";
-import "@/styles/utilities.css";
+import Nav from "@/components/nav.astro";
+import Footer from "@/components/footer.astro";
+import '../styles/tokens.css'
 
 export interface Props {
   title?: string;
@@ -54,30 +52,11 @@ const makeTitle = title ? `${title} | ${baseTitle}` : baseTitle;
       }}
     />
   </head>
-  <body>
-    <div class="container">
-      <Nav />
-      <main>
-        <slot />
-      </main>
-    </div>
-
-    <style>
-      .container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 1280px;
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      @media (max-width: 768px) {
-        main {
-          padding: 0px 18px;
-        }
-      }
-    </style>
+  <body class="flex flex-col max-w-screen-xl mx-auto min-h-screen bg-background-light">
+    <Nav />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

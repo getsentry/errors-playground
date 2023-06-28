@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
+import "@/styles/platform-cards.css";
 import { getPlatforms } from "@/content/utils";
 import MainLayout from "@/layouts/main.astro";
 
@@ -23,8 +24,14 @@ const { platform, errors } = Astro.props;
 ---
 
 <MainLayout>
-  <h1>List the {platform} errors here!</h1>
-  <ul>
-    {errors.map((error) => <li><a href={`/${platform}/${error.slug}`}>{error.data.title}</a></li>)}
-  </ul>
+  <div class="flex flex-col items-center gap-6 mt-6">
+    <h1 class="font-semibold text-3xl capitalize">{platform} errors:</h1>
+    <ul class="max-w-xl w-full">
+      {errors.map((error) => 
+        <li>
+          <a class="platform-card" href={`/${platform}/${error.slug}`}>{error.data.title}</a>
+        </li>
+      )}
+    </ul>
+  </div>
 </MainLayout>

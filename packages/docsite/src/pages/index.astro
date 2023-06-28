@@ -7,22 +7,21 @@ const platforms = await getPlatforms();
 ---
 
 <MainLayout>
-  <h1>Errors Playground</h1>
-  <ul class="platforms-grid">
-    {
-      platforms.map((platform) => (
-        <li class="platform">
-          <PlatformCard platform={platform} />
-        </li>
-      ))
-    }
-  </ul>
+  <div class="flex max-w-2xl flex-col gap-6 items-start my-24">
+    <h1 class="font-semibold text-3xl">Errors Playground</h1>
+    <p class="text-rich-black opacity-75">This project is the wikipedia for errors. It lists frameworks along with known errors that happen within them. It is an open source project, so contributions are welcome.</p>
+    <a href="https://github.com/getsentry/errors-playground" class="px-3 py-2 rounded-md bg-violet text-white hover:bg-violet-light transition-colors" rel="nofollow noopener">Contribute on GitHub</a>
+  </div>
+  <div class="flex flex-col items-center gap-10">
+    <h2 class="font-semibold text-3xl">Explore errors for:</h2>
+    <ul class="flex flex-wrap items-center justify-center gap-4">
+      {
+        platforms.map((platform) => (
+          <li class="platform">
+            <PlatformCard platform={platform} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </MainLayout>
-
-<style>
-  .platforms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    list-style: none;
-  }
-</style>

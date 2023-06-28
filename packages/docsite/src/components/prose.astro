@@ -1,98 +1,31 @@
-<article class="prose">
+<article class="px-4 my-6 mx-auto prose lg:prose-xl">
   <slot />
 </article>
 
 <style is:global>
-  /* TYPOGRAPHY */
-  .prose h1 {
-    font-weight: 600;
-    font-family: var(--font-semibold);
-    font-size: var(--typography-h1);
-    margin-bottom: var(--typography-h1-mb);
-  }
-  .prose h2 {
-    font-weight: 600;
-    font-family: var(--font-semibold);
-    font-size: var(--typography-h2);
-    margin-bottom: var(--typography-h2-mb);
-  }
-  .prose h3 {
-    font-weight: 600;
-    font-family: var(--font-semibold);
-    font-size: var(--typography-h3);
-    margin-bottom: var(--typography-h3-mb);
-  }
-  .prose h4 {
-    font-weight: 600;
-    font-family: var(--font-semibold);
-    font-size: var(--typography-h4);
-    margin-bottom: var(--typography-h4-mb);
-  }
-  .prose p {
-    font-weight: normal;
-    font-size: var(--typography-p);
-    line-height: 26px;
-    margin: 24px 0px;
-  }
-  .prose a {
-    color: var(--colors-purple);
-  }
-  .prose blockquote {
-    font-style: italic;
-    font-weight: 600;
-    font-family: var(--font-semibold);
-    padding-start: 16px;
-    border-start-width: 4px;
-    border-start-color: var(--colors-foreground);
-  }
-  .prose ul {
-    padding-inline-start: 24px;
-    list-style-type: disc;
-    margin: 24px 0px;
-  }
-  .prose ol {
-    padding-inline-start: 24px;
-    list-style: parens;
-    margin: 24px 0px;
-  }
-  .prose li {
-    padding-inline-start: 8px;
-    margin: 12px 0px;
-    line-height: 26px;
-  }
-  .prose img {
-    width: 100%;
-    height: auto;
-  }
-  .prose pre {
-    overflow: hidden;
-    max-height: 80vh;
-    margin-bottom: 24px;
-  }
   .prose pre code {
-    font-family: var(--font-code);
     flex: 1;
     overflow-x: auto;
     color: #005cc5;
     padding: 16px;
   }
   .prose code:not(pre code) {
-    font-family: var(--font-code);
-    padding: 4px 8px;
-    border: 1px solid var(--colors-border-light);
+    padding: 4px;
+    border: 1px solid #edeaf0;
     border-radius: 6px;
-    color: var(--colors-blue-dark);
-    background: var(--colors-light-grey);
+    font-weight: 400;
+    color: var(--colors-pink-light);
+    background: white;
   }
 
   /* Code Block Theming */
   .prose pre[class^="language-"] {
     display: flex;
     padding: 4px 8px;
-    border: 1px solid var(--colors-border-light);
+    border: 1px solid #edeaf0;
     border-radius: 6px;
-    color: var(--colors-blue-dark);
-    background: var(--colors-light-grey);
+    color: var(--colors-pink-light);
+    background: white; 
   }
   .prose pre[class^="language-"] code span.token.comment {
     color: #6a737d;

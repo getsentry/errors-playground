@@ -1,11 +1,20 @@
-<nav>
-  <a href="/">Playground</a>
-</nav>
+---
+import { getPlatforms } from '@/content/utils';
+import Select from './select.astro'
 
-<style>
-  nav {
-    display: flex;
-    column-gap: 24px;
-    padding: 24px 0px;
-  }
-</style>
+const platforms = await getPlatforms()
+---
+
+<div class="flex justify-between items-center py-4">
+  <header class="flex space-x-3">
+    <a href="/" class="shrink-0"><h1 class="text-4xl">💥 🛝</h1></a>
+    <Select>
+      {platforms.map((platform) => (
+        <option value={platform}>{platform}</option>
+      ))}
+    </Select>
+  </header>
+  <nav>
+    <a href="https://github.com/getsentry/errors-playground">GitHub</a>
+  </nav>
+</div>

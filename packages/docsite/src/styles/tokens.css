@@ -1,94 +1,40 @@
-@layer tokens {
+:root {
+  --colors-violet: #584774;
+  --colors-violet-light: #79628c;
+  --colors-violet-dark: #362d59;
+
+  --colors-purple: #8d5494;
+  --colors-purple-light: #ad6caa;
+  --colors-purple-dark: #452650;
+
+  --colors-pink: #e1567c;
+  --colors-pink-light: #fa7faa;
+  --colors-pink-dark: #c83852;
+
+  --colors-flame: #f4834f;
+  --colors-flame-light: #ffb287;
+  --colors-flame-dark: #df5128;
+
+  --colors-gold: #f1b71c;
+  --colors-gold-light: #fedb4b;
+  --colors-gold-dark: #d79528;
+
+  --colors-blue: #48a5db;
+  --colors-blue-dark: #2562d4;
+
+  --colors-rich-black: #181225;
+  --colors-light-grey: #f6f6f8;
+
+  --colors-background: var(--colors-light-grey);
+  --colors-foreground: var(--colors-rich-black);
+
+  --colors-border-light: #edeaf0;
+  --colors-border-dark: #56585b;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    --colors-violet: #584774;
-    --colors-violet-light: #79628c;
-    --colors-violet-dark: #362d59;
-
-    --colors-purple: #8d5494;
-    --colors-purple-light: #ad6caa;
-    --colors-purple-dark: #452650;
-
-    --colors-pink: #e1567c;
-    --colors-pink-light: #fa7faa;
-    --colors-pink-dark: #c83852;
-
-    --colors-flame: #f4834f;
-    --colors-flame-light: #ffb287;
-    --colors-flame-dark: #df5128;
-
-    --colors-gold: #f1b71c;
-    --colors-gold-light: #fedb4b;
-    --colors-gold-dark: #d79528;
-
-    --colors-blue: #48a5db;
-    --colors-blue-dark: #2562d4;
-
-    --colors-rich-black: #181225;
-    --colors-light-grey: #f6f6f8;
-
-    --colors-background: white;
-    --colors-foreground: var(--colors-rich-black);
-
-    --colors-border-light: #edeaf0;
-    --colors-border-dark: #56585b;
-
-    --font-code: 'Roboto Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro',
-      Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-    --font-regular: 'Rubik', sans-serif;
-    --font-semibold: 'Rubik', sans-serif;
-
-    --fontSizes-xs: 0.75rem;
-    --fontSizes-sm: 0.875rem;
-    --fontSizes-base: 1rem;
-    --fontSizes-lg: 1.125rem;
-    --fontSizes-xl: 1.25rem;
-    --fontSizes-2xl: 1.5rem;
-    --fontSizes-3xl: 1.875rem;
-    --fontSizes-4xl: 2.25rem;
-    --fontSizes-5xl: 3rem;
-    --fontSizes-6xl: 3.75rem;
-    --fontSizes-7xl: 4.5rem;
-    --fontSizes-8xl: 6rem;
-    --fontSizes-9xl: 8rem;
-
-    --screens-sm: 576px;
-    --screens-md: 768px;
-    --screens-lg: 1024px;
-    --screens-xl: 1280px;
-    --screens-2xl: 1536px;
-
-    --typography-h1: var(--fontSizes-4xl);
-    --typography-h1-mb: 40px;
-    --typography-h2: var(--fontSizes-2xl);
-    --typography-h2-mb: 24px;
-    --typography-h3: var(--fontSizes-xl);
-    --typography-h3-mb: 16px;
-    --typography-h4: var(--fontSizes-base);
-    --typography-h4-mb: 24px;
-    --typography-p: var(--fontSizes-base);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --colors-background: var(--colors-rich-black);
-      --colors-foreground: var(--colors-light-grey);
-    }
-  }
-
-  @media (min-width: 768px) {
-    :root {
-      --typography-h1: var(--fontSizes-5xl);
-      --typography-h1-mb: 40px;
-      --typography-h2: var(--fontSizes-3xl);
-      --typography-h2-mt: 56px;
-      --typography-h2-mb: 32px;
-      --typography-h3: var(--fontSizes-2xl);
-      --typography-h3-mt: 40px;
-      --typography-h3-mb: 16px;
-      --typography-h4: var(--fontSizes-lg);
-      --typography-h4-mt: 32px;
-      --typography-h4-mb: 8px;
-      --typography-p: var(--fontSizes-base);
-    }
+    --colors-background: var(--colors-rich-black);
+    --colors-foreground: var(--colors-light-grey);
   }
 }
