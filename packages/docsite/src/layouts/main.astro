@@ -51,6 +51,20 @@ const makeTitle = title ? `${title} | ${baseTitle}` : baseTitle;
         },
       }}
     />
+    <script>
+      import * as Sentry from "@sentry/browser";
+      import ReplayWidget from "@sentry/replay-widget"
+
+      Sentry.init({
+        dsn: "https://6f1a295fa77d48cbb3c810b5160332a0@o1418292.ingest.sentry.io/4505478406930432",
+        integrations: [new Sentry.BrowserTracing(), new ReplayWidget()],
+
+        // Set tracesSampleRate to 1.0 to capture 100%
+        // of transactions for performance monitoring.
+        // We recommend adjusting this value in production
+        tracesSampleRate: 1.0,
+      });
+    </script>
   </head>
   <body class="flex flex-col max-w-screen-xl mx-auto min-h-screen bg-background-light">
     <Nav />
