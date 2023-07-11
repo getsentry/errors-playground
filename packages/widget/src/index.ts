@@ -1,7 +1,10 @@
 import type { EventProcessor, Hub, Integration } from "@sentry/types";
 import { isBrowser } from "./utils/isBrowser";
 
-import "./widget.css";
+import template from "./template.html";
+import "./styles/reset.css";
+import "./styles/widget.css";
+import "./styles/portal.css";
 
 export default class ReplayWidget implements Integration {
   public static id: string = "ReplayWidget";
@@ -28,18 +31,29 @@ export default class ReplayWidget implements Integration {
       return;
     }
 
-    const wrapper = document.createElement("div");
-    wrapper.id = "replay-widget-wrapper";
+    const portal = document.createElement("div");
+    portal.id = "replay-widget-portal";
+    portal.innerHTML = template;
+    body.appendChild(portal);
 
-    const widget = document.createElement("button");
-    widget.id = "replay-widget";
+    const widget = body.querySelector("#replay-widget");
+
+    if (!widget) {
+      console.error("ReplayWidget: cannot access widget in DOM.");
+      return;
+    }
+
+    const dialog = body.querySelector(
+      "#replay-widget-dialog"
+    ) as HTMLDialogElement;
+
+    if (!dialog) {
+      console.error("ReplayWidget: cannot access dialog in DOM.");
+      return;
+    }
 
     widget.addEventListener("click", () => {
-      console.log("SHOW MODAL");
+      dialog.showModal();
     });
-
-    wrapper.appendChild(widget);
-
-    body.appendChild(wrapper);
   }
 }

@@ -25,6 +25,7 @@
     "@sentry/types": "^7.57.0",
     "@types/node": "^20.3.3",
     "rollup": "^3.26.1",
+    "rollup-plugin-html": "^0.2.1",
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.0.2"
   },
