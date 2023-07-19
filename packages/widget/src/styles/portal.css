@@ -12,6 +12,121 @@
   pointer-events: auto;
 }
 
+#replay-widget-portal .hidden {
+  display: none !important;
+}
+
+#replay-widget-portal #recording-options {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
 #replay-widget-portal button {
   cursor: pointer;
+}
+
+#replay-widget-portal footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+#replay-widget-portal #replay-widget-powered-by {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#replay-widget-portal button#close svg {
+  width: 16px;
+  height: 16px;
+}
+
+#replay-widget-dialog {
+  padding: 48px;
+  max-width: 512px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 1.6px 5.3px rgba(0, 0, 0, 0.044),
+    0px 5.4px 17.9px rgba(0, 0, 0, 0.066), 0px 24px 80px rgba(0, 0, 0, 0.11);
+}
+
+#replay-widget-dialog header h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+#replay-widget-dialog header p {
+  color: #6a737d;
+  text-align: center;
+}
+
+#replay-widget-dialog input,
+#replay-widget-dialog textarea {
+  background: #fbfbfc;
+  border: 1px solid #c4c9d8;
+  padding: 12px;
+}
+
+#replay-widget-dialog button.primary {
+  background: #55a3f2;
+  border: 1px solid #498cd4;
+  border-radius: 2px;
+  color: white;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+#replay-widget-dialog button.primary:hover {
+  background: #498cd4;
+}
+
+#replay-widget-dialog button.secondary {
+  background: #f6f8fa;
+  border: 1px solid #c4c9d8;
+  border-radius: 2px;
+  color: #24292e;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+#replay-widget-dialog button.secondary:hover {
+  background: #eaeef2;
+}
+
+#replay-widget-portal button#close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: #f6f8fa;
+  border: 1px solid #c4c9d8;
+  border-radius: 2px;
+  color: #24292e;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#replay-widget-portal button#close:hover {
+  background: #eaeef2;
+}
+
+#replay-widget-dialog #form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#replay-widget-dialog .form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

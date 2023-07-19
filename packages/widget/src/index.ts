@@ -11,6 +11,7 @@ export default class ReplayWidget implements Integration {
   public static id: string = "ReplayWidget";
   public name: string = ReplayWidget.id;
 
+  private _uiState: "idle" | "recording" | "submitting" = "idle";
   private _hub: Hub | null = null;
   private _client: BrowserClient | null = null;
   private _replayIntegration: Integration | null = null;
@@ -75,6 +76,65 @@ export default class ReplayWidget implements Integration {
 
     widget.addEventListener("click", () => {
       dialog.showModal();
+    });
+
+    const form = dialog.querySelector("#dialog-form") as HTMLFormElement;
+
+    if (!form) {
+      console.error("ReplayWidget: cannot access form in DOM.");
+      return;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form).entries();
+      const data = Object.fromEntries(formData);
+      console.log(data);
+    });
+
+    const closeButtons = form.querySelectorAll(".close");
+    closeButtons.forEach((button) =>
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        dialog.close();
+      })
+    );
+
+    const recordingOptions = dialog.querySelector("#recording-options");
+    const startRecording = dialog.querySelector("#start-recording");
+    const grabLastSeconds = dialog.querySelector("#grab-last-seconds");
+    const formFields = dialog.querySelector("#form-fields");
+    const footerButtons = dialog.querySelector("#footer-buttons");
+    const removeRecording = dialog.querySelector("#remove-recording");
+
+    if (
+      !recordingOptions ||
+      !removeRecording ||
+      !startRecording ||
+      !grabLastSeconds ||
+      !formFields ||
+      !footerButtons
+    ) {
+      console.error("ReplayWidget: cannot access dialog controls in DOM.");
+      return;
+    }
+
+    startRecording.addEventListener("click", () => {
+      this._uiState = "recording";
+    });
+
+    grabLastSeconds.addEventListener("click", () => {
+      this._uiState = "submitting";
+      formFields.classList.remove("hidden");
+      footerButtons.classList.remove("hidden");
+      recordingOptions.classList.add("hidden");
+    });
+
+    removeRecording.addEventListener("click", () => {
+      this._uiState = "idle";
+      formFields.classList.add("hidden");
+      footerButtons.classList.add("hidden");
+      recordingOptions.classList.remove("hidden");
     });
 
     this._isInstalled = true;
