@@ -5,10 +5,16 @@ import template from "./template.html";
 import "./styles/reset.css";
 import "./styles/widget.css";
 import "./styles/portal.css";
+import { Replay, BrowserClient } from "@sentry/browser";
 
 export default class ReplayWidget implements Integration {
   public static id: string = "ReplayWidget";
   public name: string = ReplayWidget.id;
+
+  private _hub: Hub | null = null;
+  private _client: BrowserClient | null = null;
+  private _replayIntegration: Integration | null = null;
+  private _isInstalled: boolean = false;
 
   setupOnce(
     addGlobalEventProcessor: (callback: EventProcessor) => void,
@@ -18,7 +24,22 @@ export default class ReplayWidget implements Integration {
       return;
     }
 
-    this._setup();
+    addGlobalEventProcessor((event) => {
+      if (!this._isInstalled) {
+        this._hub = getCurrentHub();
+        this._client = this._hub.getClient() as BrowserClient;
+        this._replayIntegration = this._client.getIntegration(Replay);
+
+        if (this._replayIntegration === null) {
+          console.error('ReplayWidget: "Replay" integration is required.');
+          return event;
+        }
+
+        this._setup();
+      }
+
+      return event;
+    });
   }
 
   private _setup(): void {
@@ -55,5 +76,7 @@ export default class ReplayWidget implements Integration {
     widget.addEventListener("click", () => {
       dialog.showModal();
     });
+
+    this._isInstalled = true;
   }
 }
